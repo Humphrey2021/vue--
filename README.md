@@ -2,12 +2,9 @@
 
 ## 目标：
 - 模拟一个最小版本的vue
-- 响应式原理在面试的常见问题
-- 学习别人优秀的经验，转换成自己的经验
 - 实际项目中出问题的原理层面的解决
     - 给Vue实例新增一个成员是否是响应式的？
     - 给属性重新赋值成对象，是否是响应式的？
-- 为学习Vue源码做铺垫
 
 ## 准备工作
 - 数据驱动
@@ -161,6 +158,37 @@
         isDirective(attrName)
         isTextNode(node)
         isElementNode(node)
+    ```
+
+### Dep(Dependency)
+`selfVue/js/dep.js`
+- 功能
+    - 收集依赖， 添加观察者（watcher）
+    - 通知所有观察者
+- 结构
+    ```
+    名称：Dep
+    属性：
+        subs
+    方法：
+        addSub(sub)
+        notify()
+    ```
+
+### Watcher
+- 功能
+    - 当数据变化触发依赖，dep通知所有的 Watcher 实例更新视图
+    - 自身实例化的时候往 dep 对象中添加自己
+- 结构
+    ```
+    名称：Watcher
+    属性：
+        vm
+        key
+        cb(callback)
+        oldValue
+    方法：
+        update()
     ```
 
 
