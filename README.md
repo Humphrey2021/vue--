@@ -191,4 +191,4 @@
         update()
     ```
 
-
+> 参考：[文档](https://github.com/DMQ/mvvm)
