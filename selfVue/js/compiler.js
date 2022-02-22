@@ -76,7 +76,7 @@ class Compiler {
             node.textContent = value.replace(reg, this.vm[key])
             // 创建watcher对象，当数据改变更新视图
             new Watcher(this.vm, key, newValue => {
-                node.textContent = newValue
+                node.textContent = value.replace(reg, newValue)
             })
         }
     }
